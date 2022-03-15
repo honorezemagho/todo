@@ -3,34 +3,33 @@ import Meta from "../components/Meta";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { addNewTodo } from "../services/todo";
-import { Navigate } from "react-router-dom";
 
 const NewTask = () => {
   // page content
   const pageTitle = "New Task";
   const pageDescription = "Add a new Task";
 
-  const [name, setName] = useState('')
-  const [activity, setActivity] = useState('')
-  const [dateline, setDateline] = useState('')
-  
-  const handleNameChange = event => {
-    setName(event.target.value)
+  const [name, setName] = useState("");
+  const [activity, setActivity] = useState("");
+  const [dateline, setDateline] = useState("");
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
-  const handleActivityChange = event => {
-    setActivity(event.target.value)
+  const handleActivityChange = (event) => {
+    setActivity(event.target.value);
   };
 
-  const handleDatelineChange = event => {
-    setDateline(event.target.value)
+  const handleDatelineChange = (event) => {
+    setDateline(event.target.value);
   };
 
   const handleAdd = (todo) => {
     addNewTodo(todo).then(() => {
       toast("Todo successfully added!");
-      window.location.href = '/';
-    })
+      window.location.href = "/";
+    });
   };
 
   return (
@@ -38,10 +37,12 @@ const NewTask = () => {
       <Meta title={pageTitle} />
       <Header head={pageTitle} description={pageDescription} />
 
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        handleAdd({name,activity,dateline});
-      }}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAdd({ name, activity, dateline });
+        }}
+      >
         <div className="justify-content-center">
           <div class="form-group my-3">
             <label for="name">Name:</label>
@@ -69,13 +70,18 @@ const NewTask = () => {
 
           <div class="form-group my-3">
             <label for="date">Dateline:</label>
-            <input type="date" class="form-control" id="date" required               
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              required
               onChange={handleDatelineChange}
-              value={dateline}/>
+              value={dateline}
+            />
           </div>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Create"/>
+        <input type="submit" class="btn btn-primary" value="Create" />
       </form>
     </div>
   );
