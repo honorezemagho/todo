@@ -1,13 +1,36 @@
 import Header from "../components/Header";
 import Meta from "../components/Meta";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { addNewTodo } from "../services/todo";
+import { Navigate } from "react-router-dom";
 
 const NewTask = () => {
   // page content
   const pageTitle = "New Task";
   const pageDescription = "Add a new Task";
 
-  const handleAdd = () => {
-    return "";
+  const [name, setName] = useState('')
+  const [activity, setActivity] = useState('')
+  const [dateline, setDateline] = useState('')
+  
+  const handleNameChange = event => {
+    setName(event.target.value)
+  };
+
+  const handleActivityChange = event => {
+    setActivity(event.target.value)
+  };
+
+  const handleDatelineChange = event => {
+    setDateline(event.target.value)
+  };
+
+  const handleAdd = (todo) => {
+    addNewTodo(todo).then(() => {
+      toast("Todo successfully added!");
+      window.location.href = '/';
+    })
   };
 
   return (
@@ -15,7 +38,10 @@ const NewTask = () => {
       <Meta title={pageTitle} />
       <Header head={pageTitle} description={pageDescription} />
 
-      <form>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        handleAdd({name,activity,dateline});
+      }}>
         <div className="justify-content-center">
           <div class="form-group my-3">
             <label for="name">Name:</label>
@@ -24,6 +50,9 @@ const NewTask = () => {
               class="form-control"
               id="name"
               placeholder="name of the todo"
+              required
+              onChange={handleNameChange}
+              value={name}
             />
           </div>
 
@@ -33,16 +62,20 @@ const NewTask = () => {
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
+              onChange={handleActivityChange}
+              value={activity}
             ></textarea>
           </div>
 
           <div class="form-group my-3">
             <label for="date">Dateline:</label>
-            <input type="date" class="form-control" id="date" />
+            <input type="date" class="form-control" id="date" required               
+              onChange={handleDatelineChange}
+              value={dateline}/>
           </div>
         </div>
 
-        <input type="submit" class="btn btn-primary" value="Create"></input>
+        <input type="submit" class="btn btn-primary" value="Create"/>
       </form>
     </div>
   );
