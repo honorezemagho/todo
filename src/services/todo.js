@@ -1,5 +1,5 @@
 import http from "../services/httpService";
-const baseApi = "http://ho-todo.herokuapp.com/api/todos";
+const baseApi = "https://ho-todo.herokuapp.com/api/todos";
 
 export function getTodos() {
   return http.get(baseApi).then((data) => data.data);
