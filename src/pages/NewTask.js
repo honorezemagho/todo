@@ -6,6 +6,10 @@ const NewTask = () => {
   const pageTitle = "New Task";
   const pageDescription = "Add a new Task";
 
+  const handleAdd = () => {
+    return "";
+  };
+
   return (
     <div>
       <Meta title={pageTitle} />
@@ -34,13 +38,11 @@ const NewTask = () => {
 
           <div class="form-group my-3">
             <label for="date">Dateline:</label>
-            <input
-              type="date"
-              class="form-control"
-              id="date"
-            />
+            <input type="date" class="form-control" id="date" />
           </div>
         </div>
+
+        <input type="submit" class="btn btn-primary" value="Create"></input>
       </form>
     </div>
   );
