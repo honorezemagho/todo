@@ -1,20 +1,5 @@
-![image-banner](./screenshots/react-bootstrap-starter.png)
+# Todo App
 
-> This is an update to the previous article I wrote on [React & Bootstrap Starter Template](https://chrisdev.hashnode.dev/react-and-bootstrap-starter-template)
-
-## Why a Template?
-
-It's because they save time.
-
-The process of setting up a project can be always frustrating and it's always repetitive. That's why I have a template for almost every stack I do.
-
-# React & Bootstrap
-
-I love using Bootstrap because of the almost Zero configuration and the hustle of designing a responsive web layout is taken care of so I just focus on how a site would look.
-
-**Updates ...**
-
-I wrote a similar article and after some updates here and there, I made a few changes and decided to re-write the article, of course after updating my template.
 
 ## Components:
 
